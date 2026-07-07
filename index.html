@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>广州华新集团有限公司 - 2026年奖补项目申报清单</title>
     <style>
         :root {
@@ -28,6 +28,7 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* ===== Header (Sticky) ===== */
@@ -76,7 +77,10 @@
             display: flex;
             gap: 0;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        .nav-inner::-webkit-scrollbar { display: none; }
         .nav a {
             color: rgba(255,255,255,0.75);
             text-decoration: none;
@@ -85,6 +89,7 @@
             white-space: nowrap;
             transition: all 0.2s;
             border-bottom: 3px solid transparent;
+            flex-shrink: 0;
         }
         .nav a:hover, .nav a.active {
             color: white;
@@ -125,6 +130,7 @@
             justify-content: center;
             color: white;
             font-size: 16px;
+            flex-shrink: 0;
         }
 
         /* ===== Card ===== */
@@ -192,26 +198,10 @@
             font-size: 13px;
             font-weight: 500;
         }
-        .badge-national {
-            background: linear-gradient(135deg, #e74c3c22, #e74c3c11);
-            color: #c0392b;
-            border: 1px solid #e74c3c44;
-        }
-        .badge-province {
-            background: linear-gradient(135deg, #3498db22, #3498db11);
-            color: #2471a3;
-            border: 1px solid #3498db44;
-        }
-        .badge-city {
-            background: linear-gradient(135deg, #27ae6022, #27ae6011);
-            color: #1e8449;
-            border: 1px solid #27ae6044;
-        }
-        .badge-other {
-            background: linear-gradient(135deg, #8e44ad22, #8e44ad11);
-            color: #6c3483;
-            border: 1px solid #8e44ad44;
-        }
+        .badge-national { background: linear-gradient(135deg, #e74c3c22, #e74c3c11); color: #c0392b; border: 1px solid #e74c3c44; }
+        .badge-province { background: linear-gradient(135deg, #3498db22, #3498db11); color: #2471a3; border: 1px solid #3498db44; }
+        .badge-city { background: linear-gradient(135deg, #27ae6022, #27ae6011); color: #1e8449; border: 1px solid #27ae6044; }
+        .badge-other { background: linear-gradient(135deg, #8e44ad22, #8e44ad11); color: #6c3483; border: 1px solid #8e44ad44; }
 
         /* ===== Business Cards Grid ===== */
         .biz-grid {
@@ -227,32 +217,16 @@
             border: 1px solid var(--border);
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .biz-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        }
+        .biz-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
         .biz-card .biz-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 14px;
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 14px;
         }
-        .biz-card h4 {
-            font-size: 16px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        .biz-card p {
-            font-size: 13px;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+        .biz-card h4 { font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+        .biz-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
 
-        /* ===== Table ===== */
+        /* ===== Desktop Table ===== */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 12px;
@@ -281,54 +255,93 @@
             border-bottom: 1px solid var(--border);
             vertical-align: top;
         }
-        tbody tr:hover {
-            background: #f0f5ff;
-        }
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
+        tbody tr:hover { background: #f0f5ff; }
+        tbody tr:last-child td { border-bottom: none; }
         .level-tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
+            display: inline-block; padding: 3px 10px; border-radius: 12px;
+            font-size: 12px; font-weight: 600; white-space: nowrap;
         }
         .level-national { background: #fde8e8; color: #c0392b; }
         .level-province { background: #e8f0fe; color: #2471a3; }
         .level-city { background: #e8f8e8; color: #1e8449; }
         .level-district { background: #f3e8fd; color: #6c3483; }
-        .amount {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 15px;
-        }
+        .amount { font-weight: 700; color: var(--accent); font-size: 15px; }
         .category-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 500;
-            background: #f0f0f0;
-            color: #555;
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 11px; font-weight: 500; background: #f0f0f0; color: #555;
         }
 
         /* ===== Tech Tags ===== */
         .tech-tag {
-            display: inline-block;
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 500;
-            background: #e8f4fd;
-            color: #2471a3;
-            margin: 1px 2px;
-            white-space: nowrap;
+            display: inline-block; padding: 2px 7px; border-radius: 4px;
+            font-size: 11px; font-weight: 500; background: #e8f4fd; color: #2471a3;
+            margin: 1px 2px; white-space: nowrap;
         }
         .tech-tag.ai { background: #fde8f4; color: #c0392b; }
         .tech-tag.hw { background: #e8fde8; color: #1e8449; }
         .tech-tag.sw { background: #f3e8fd; color: #6c3483; }
+
+        /* ===== Mobile Card View (hidden on desktop) ===== */
+        .mobile-cards { display: none; }
+
+        .m-project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .m-project-card .m-card-header {
+            padding: 16px 18px 12px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .m-project-card .m-card-header .m-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            flex: 1;
+        }
+        .m-project-card .m-card-header .m-seq {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--accent);
+            color: white; font-size: 13px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .m-project-card .m-card-body { padding: 4px 18px 16px; }
+        .m-field {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .m-field:last-child { border-bottom: none; }
+        .m-field .m-label {
+            min-width: 80px;
+            max-width: 80px;
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 600;
+            padding-top: 2px;
+            flex-shrink: 0;
+        }
+        .m-field .m-value {
+            flex: 1;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .m-field .m-value.amount {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 16px;
+        }
 
         /* ===== Stats Bar ===== */
         .stats-bar {
@@ -375,6 +388,9 @@
             font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
         .filter-btn:hover, .filter-btn.active {
             background: var(--primary);
@@ -383,142 +399,54 @@
         }
 
         /* ===== Timeline ===== */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
+        .timeline { position: relative; padding-left: 30px; }
         .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent), var(--primary));
+            content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+            width: 3px; background: linear-gradient(to bottom, var(--accent), var(--primary));
             border-radius: 2px;
         }
         .timeline-item {
-            position: relative;
-            margin-bottom: 24px;
-            padding: 18px 24px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
+            position: relative; margin-bottom: 24px; padding: 18px 24px;
+            background: var(--card-bg); border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border);
         }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 24px;
-            width: 14px;
-            height: 14px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--accent);
+            content: ''; position: absolute; left: -26px; top: 24px;
+            width: 14px; height: 14px; background: var(--accent);
+            border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--accent);
         }
-        .timeline-item .year {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-        .timeline-item h4 {
-            font-size: 15px;
-            color: var(--primary);
-            margin-bottom: 6px;
-        }
-        .timeline-item p {
-            font-size: 13px;
-            color: var(--text-light);
-        }
-        .status-done {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
-            background: #27ae6022;
-            color: #27ae60;
-            font-weight: 600;
-        }
-        .status-progress {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
-            background: #f39c1222;
-            color: #f39c12;
-            font-weight: 600;
-        }
+        .timeline-item .year { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .timeline-item h4 { font-size: 15px; color: var(--primary); margin-bottom: 6px; }
+        .timeline-item p { font-size: 13px; color: var(--text-light); }
+        .status-done { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; background: #27ae6022; color: #27ae60; font-weight: 600; }
+        .status-progress { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; background: #f39c1222; color: #f39c12; font-weight: 600; }
 
         /* ===== Policy Links ===== */
         .policy-ref a {
-            color: var(--info);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--info);
-            font-size: 13px;
-            transition: all 0.2s;
-            word-break: break-all;
+            color: var(--info); text-decoration: none; border-bottom: 1px dashed var(--info);
+            font-size: 13px; transition: all 0.2s; word-break: break-all;
         }
-        .policy-ref a:hover {
-            color: var(--primary);
-            border-bottom-style: solid;
-        }
+        .policy-ref a:hover { color: var(--primary); border-bottom-style: solid; }
         .policy-card a {
-            color: var(--info);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--info);
-            transition: all 0.2s;
+            color: var(--info); text-decoration: none; border-bottom: 1px dashed var(--info); transition: all 0.2s;
         }
-        .policy-card a:hover {
-            color: var(--primary);
-            border-bottom-style: solid;
-        }
-        .ext-icon {
-            display: inline-block;
-            font-size: 10px;
-            margin-left: 2px;
-            opacity: 0.6;
-        }
+        .policy-card a:hover { color: var(--primary); border-bottom-style: solid; }
+        .ext-icon { display: inline-block; font-size: 10px; margin-left: 2px; opacity: 0.6; }
 
         /* ===== Roadmap ===== */
-        .roadmap {
-            margin-top: 24px;
-        }
+        .roadmap { margin-top: 24px; }
         .roadmap-quarter {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 14px;
-            align-items: flex-start;
+            display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;
         }
         .roadmap-label {
-            min-width: 72px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            padding-top: 6px;
-            text-align: center;
-            background: white;
-            border-radius: 8px;
-            padding: 8px 4px;
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            min-width: 72px; font-size: 14px; font-weight: 700; color: var(--primary);
+            padding-top: 6px; text-align: center; background: white; border-radius: 8px;
+            padding: 8px 4px; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         }
-        .roadmap-items {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .roadmap-items { flex: 1; display: flex; flex-wrap: wrap; gap: 8px; }
         .roadmap-item {
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid;
-            line-height: 1.5;
-            max-width: 280px;
+            padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 500;
+            border: 1px solid; line-height: 1.5; max-width: 280px;
         }
         .roadmap-item.national { background: #fde8e811; border-color: #e74c3c44; color: #c0392b; }
         .roadmap-item.province { background: #e8f0fe11; border-color: #3498db44; color: #2471a3; }
@@ -527,190 +455,86 @@
 
         /* ===== Unit Summary ===== */
         .unit-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
-            margin-top: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px; margin-top: 20px;
         }
         .unit-card {
-            background: white;
-            border-radius: 10px;
-            padding: 18px 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            background: white; border-radius: 10px; padding: 18px 20px;
+            border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .unit-card .unit-name {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
+        .unit-card .unit-name { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
         .unit-card .unit-count {
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 24px; font-weight: 800;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .unit-card .unit-desc {
-            font-size: 12px;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
+        .unit-card .unit-desc { font-size: 12px; color: var(--text-light); margin-top: 4px; }
 
         /* ===== Lifecycle Bar ===== */
         .lifecycle-bar {
-            margin-top: 20px;
-            padding: 20px 24px;
-            background: #f8f9fc;
-            border-radius: 10px;
-            border: 1px solid var(--border);
+            margin-top: 20px; padding: 20px 24px; background: #f8f9fc;
+            border-radius: 10px; border: 1px solid var(--border);
         }
-        .lifecycle-bar h4 {
-            font-size: 14px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .lifecycle-steps {
-            display: flex;
-            gap: 0;
-            position: relative;
-        }
-        .lifecycle-step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            padding: 0 4px;
-        }
-        .lifecycle-step .bar {
-            height: 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
+        .lifecycle-bar h4 { font-size: 14px; color: var(--primary); margin-bottom: 16px; font-weight: 600; }
+        .lifecycle-steps { display: flex; gap: 0; position: relative; }
+        .lifecycle-step { flex: 1; text-align: center; position: relative; padding: 0 4px; }
+        .lifecycle-step .bar { height: 8px; border-radius: 4px; margin-bottom: 10px; }
         .lifecycle-step:nth-child(1) .bar { background: #3498db; }
         .lifecycle-step:nth-child(2) .bar { background: #9b59b6; }
         .lifecycle-step:nth-child(3) .bar { background: #27ae60; }
         .lifecycle-step:nth-child(4) .bar { background: #e74c3c; }
-        .lifecycle-step .step-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
+        .lifecycle-step .step-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
         .lifecycle-step .step-pct {
-            font-size: 18px;
-            font-weight: 800;
+            font-size: 18px; font-weight: 800;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
 
         /* ===== Contact Bar ===== */
         .contact-bar {
-            margin-top: 20px;
-            padding: 16px 28px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            flex-wrap: wrap;
+            margin-top: 20px; padding: 16px 28px; background: white;
+            border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border); display: flex;
+            align-items: center; gap: 28px; flex-wrap: wrap;
         }
         .contact-bar-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            white-space: nowrap;
-            padding-right: 12px;
-            border-right: 2px solid var(--border);
+            font-size: 14px; font-weight: 700; color: var(--primary);
+            white-space: nowrap; padding-right: 12px; border-right: 2px solid var(--border);
         }
-        .contact-bar-name {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
-        .contact-bar-info {
-            font-size: 13px;
-            color: var(--text);
-        }
-        .contact-bar-info .cb-label {
-            color: var(--text-light);
-            margin-right: 4px;
-        }
-        .contact-bar-info a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-        }
-        .contact-bar-info a:hover {
-            color: var(--accent);
-        }
-        .contact-bar-sep {
-            width: 1px;
-            height: 28px;
-            background: var(--border);
-        }
+        .contact-bar-name { font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+        .contact-bar-info { font-size: 13px; color: var(--text); }
+        .contact-bar-info .cb-label { color: var(--text-light); margin-right: 4px; }
+        .contact-bar-info a { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 15px; }
+        .contact-bar-info a:hover { color: var(--accent); }
+        .contact-bar-sep { width: 1px; height: 28px; background: var(--border); }
 
         /* ===== Collapse Sections ===== */
         .collapse-group {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 2px dashed var(--border);
+            margin-top: 48px; padding-top: 32px; border-top: 2px dashed var(--border);
         }
         .collapse-group-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 16px;
-            text-align: center;
-            letter-spacing: 2px;
+            font-size: 16px; font-weight: 600; color: var(--text-light);
+            margin-bottom: 16px; text-align: center; letter-spacing: 2px;
         }
         .collapse-section {
-            margin-bottom: 12px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--card-bg);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 12px; border-radius: 12px; overflow: hidden;
+            background: var(--card-bg); box-shadow: 0 2px 12px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
         }
         .collapse-section summary {
-            padding: 18px 28px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            list-style: none;
-            border-left: 4px solid var(--accent);
-            transition: background 0.2s;
+            padding: 18px 28px; cursor: pointer; font-size: 16px; font-weight: 600;
+            color: var(--primary); display: flex; align-items: center; gap: 12px;
+            list-style: none; border-left: 4px solid var(--accent); transition: background 0.2s;
         }
         .collapse-section summary::-webkit-details-marker { display: none; }
         .collapse-section summary:hover { background: #f8f9fc; }
         .collapse-section summary::before {
-            content: '\25B6';
-            font-size: 12px;
-            color: var(--accent);
-            transition: transform 0.3s;
-            flex-shrink: 0;
+            content: '\25B6'; font-size: 12px; color: var(--accent);
+            transition: transform 0.3s; flex-shrink: 0;
         }
         .collapse-section[open] summary::before { transform: rotate(90deg); }
-        .collapse-section[open] summary {
-            border-bottom: 1px solid var(--border);
-            background: #f8f9fc;
-        }
-        .collapse-section .collapse-body {
-            padding: 24px 28px;
-            animation: fadeSlideIn 0.3s ease;
-        }
+        .collapse-section[open] summary { border-bottom: 1px solid var(--border); background: #f8f9fc; }
+        .collapse-section .collapse-body { padding: 24px 28px; animation: fadeSlideIn 0.3s ease; }
         @keyframes fadeSlideIn {
             from { opacity: 0; transform: translateY(-8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -718,11 +542,8 @@
 
         /* ===== Footer ===== */
         .footer {
-            background: var(--primary);
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 24px;
-            font-size: 13px;
+            background: var(--primary); color: rgba(255,255,255,0.7);
+            text-align: center; padding: 24px; font-size: 13px;
         }
 
         /* ===== Print ===== */
@@ -730,18 +551,182 @@
             .header, .nav, .filter-bar { position: static; }
             .section { page-break-inside: avoid; }
             .collapse-section { break-inside: avoid; }
-            .collapse-section[open] summary { break-after: avoid; }
+            .mobile-cards { display: none !important; }
         }
 
-        /* ===== Responsive ===== */
+        /* ================================================================
+           RESPONSIVE BREAKPOINTS
+           ================================================================ */
+
+        /* ===== Tablet & Small Desktop (≤1024px) ===== */
+        @media (max-width: 1024px) {
+            .container { padding: 20px 20px 48px; }
+            .header-inner { padding: 16px 20px; flex-direction: column; gap: 6px; align-items: flex-start; }
+            .header h1 { font-size: 20px; }
+            .header h1 span { display: block; margin-left: 0; margin-top: 4px; font-size: 14px; }
+            .header-meta { font-size: 12px; }
+            .nav-inner { padding: 0 12px; }
+            .nav a { padding: 12px 16px; font-size: 13px; }
+
+            /* Hide desktop table, show mobile cards */
+            .table-wrapper { display: none; }
+            .mobile-cards { display: block; }
+
+            .section-title { font-size: 18px; }
+            .section-title .icon { width: 28px; height: 28px; font-size: 14px; }
+
+            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stat-card { padding: 18px; }
+            .stat-card .stat-num { font-size: 28px; }
+
+            .roadmap-quarter { flex-direction: column; gap: 8px; }
+            .roadmap-label {
+                min-width: auto; text-align: left; padding: 8px 14px;
+                display: flex; gap: 8px; align-items: center;
+            }
+            .roadmap-item { max-width: 100%; }
+
+            .unit-summary { grid-template-columns: repeat(2, 1fr); }
+
+            .card { padding: 20px 22px; }
+            .collapse-section summary { padding: 16px 20px; font-size: 15px; }
+            .collapse-section .collapse-body { padding: 20px; }
+            .timeline { padding-left: 24px; }
+            .timeline-item { padding: 14px 18px; }
+        }
+
+        /* ===== Mobile (≤768px) ===== */
         @media (max-width: 768px) {
-            .container { padding: 16px; }
-            .header-inner { padding: 16px; flex-direction: column; gap: 8px; }
-            .nav-inner { padding: 0 16px; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); }
-            .info-grid { grid-template-columns: 1fr; }
-            .contact-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .container { padding: 16px 12px 40px; }
+            .header-inner { padding: 14px 16px; }
+            .header h1 { font-size: 18px; }
+            .header h1 span { font-size: 13px; }
+            .nav-inner { padding: 0 8px; }
+            .nav a { padding: 10px 14px; font-size: 12px; }
+
+            .section { margin-bottom: 28px; }
+            .section-title { font-size: 17px; margin-bottom: 16px; padding-bottom: 10px; }
+
+            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+            .stat-card { padding: 14px 10px; }
+            .stat-card .stat-num { font-size: 24px; }
+            .stat-card .stat-label { font-size: 11px; }
+
+            .filter-bar { gap: 6px; margin-bottom: 16px; }
+            .filter-btn { padding: 6px 14px; font-size: 12px; min-height: 40px; }
+
+            .m-project-card { margin-bottom: 14px; }
+            .m-project-card .m-card-header { padding: 14px 14px 10px; }
+            .m-project-card .m-card-header .m-title { font-size: 14px; }
+            .m-project-card .m-card-body { padding: 2px 14px 14px; }
+            .m-field { padding: 8px 0; font-size: 13px; }
+            .m-field .m-label { min-width: 70px; max-width: 70px; font-size: 11px; }
+
+            .roadmap-quarter { margin-bottom: 10px; }
+            .roadmap-items { gap: 6px; }
+            .roadmap-item { font-size: 11px; padding: 6px 10px; }
+
+            .unit-summary { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .unit-card { padding: 14px 16px; }
+            .unit-card .unit-count { font-size: 20px; }
+            .unit-card .unit-name { font-size: 12px; }
+            .unit-card .unit-desc { font-size: 11px; }
+
+            .card { padding: 18px 16px; border-radius: 10px; }
+            .card h3 { font-size: 15px; margin-bottom: 10px; }
+            .card p { font-size: 14px; line-height: 1.75; }
+
+            .contact-bar {
+                flex-direction: column; align-items: flex-start;
+                gap: 10px; padding: 14px 18px;
+            }
             .contact-bar-sep { display: none; }
+            .contact-bar-name { font-size: 16px; }
+
+            .lifecycle-bar { padding: 16px 14px; }
+            .lifecycle-step .step-label { font-size: 11px; }
+            .lifecycle-step .step-pct { font-size: 15px; }
+
+            .info-grid { grid-template-columns: 1fr; gap: 12px; }
+            .info-item { padding: 16px 18px; }
+            .info-item .value { font-size: 14px; }
+
+            .biz-grid { grid-template-columns: 1fr; gap: 12px; }
+
+            .badge-group { gap: 6px; }
+            .badge { padding: 6px 12px; font-size: 12px; }
+
+            .collapse-section summary { padding: 14px 16px; font-size: 14px; }
+            .collapse-section .collapse-body { padding: 16px; }
+
+            .timeline { padding-left: 20px; }
+            .timeline::before { left: 6px; }
+            .timeline-item { padding: 12px 16px; margin-bottom: 16px; }
+            .timeline-item::before { left: -20px; width: 12px; height: 12px; top: 20px; }
+
+            .footer { padding: 18px 12px; font-size: 12px; }
+        }
+
+        /* ===== Small Mobile (≤480px) ===== */
+        @media (max-width: 480px) {
+            .container { padding: 12px 8px 32px; }
+            .header-inner { padding: 12px 12px; }
+            .header h1 { font-size: 16px; }
+            .header h1 span { font-size: 12px; }
+            .header-meta { font-size: 11px; }
+            .nav a { padding: 10px 12px; font-size: 11px; }
+
+            .section-title { font-size: 15px; gap: 8px; }
+            .section-title .icon { width: 24px; height: 24px; font-size: 12px; border-radius: 6px; }
+
+            .stats-bar { gap: 8px; margin-bottom: 16px; }
+            .stat-card { padding: 12px 8px; }
+            .stat-card .stat-num { font-size: 20px; }
+            .stat-card .stat-label { font-size: 10px; }
+
+            .filter-btn { padding: 5px 10px; font-size: 11px; min-height: 36px; }
+
+            .m-project-card .m-card-header { padding: 12px 12px 8px; }
+            .m-project-card .m-card-header .m-title { font-size: 13px; }
+            .m-project-card .m-card-body { padding: 0 12px 12px; }
+            .m-field { padding: 7px 0; font-size: 12px; }
+            .m-field .m-label { min-width: 62px; max-width: 62px; font-size: 10px; }
+            .m-field .m-value.amount { font-size: 14px; }
+
+            .roadmap-label { padding: 6px 10px; font-size: 12px; }
+            .roadmap-item { font-size: 10px; padding: 5px 8px; }
+
+            .unit-summary { grid-template-columns: 1fr; }
+
+            .card { padding: 14px 12px; }
+            .card h3 { font-size: 14px; }
+            .card p { font-size: 13px; }
+
+            .lifecycle-step .step-label { font-size: 10px; }
+            .lifecycle-step .step-pct { font-size: 14px; }
+
+            .contact-bar { padding: 12px 14px; }
+            .contact-bar-title { font-size: 13px; }
+            .contact-bar-name { font-size: 15px; }
+            .contact-bar-info { font-size: 12px; }
+
+            .info-item { padding: 14px 14px; }
+            .info-item .label { font-size: 10px; }
+            .info-item .value { font-size: 13px; }
+
+            .badge { padding: 5px 10px; font-size: 11px; }
+            .badge-group { gap: 5px; }
+
+            .collapse-section summary { padding: 12px 14px; font-size: 13px; gap: 8px; }
+            .collapse-section .collapse-body { padding: 14px 12px; }
+
+            .timeline { padding-left: 16px; }
+            .timeline-item { padding: 10px 12px; }
+            .timeline-item .year { font-size: 12px; }
+            .timeline-item h4 { font-size: 13px; }
+            .timeline-item p { font-size: 12px; }
+
+            .footer { font-size: 11px; padding: 16px 8px; }
         }
     </style>
 </head>
@@ -781,7 +766,7 @@
                 <div class="stat-label">可申报项目总数</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">~730-10600+</div>
+                <div class="stat-num">~106,00+</div>
                 <div class="stat-label">预计奖补总额（万元）</div>
             </div>
             <div class="stat-card">
@@ -802,7 +787,7 @@
             <button class="filter-btn" onclick="filterTable('city')">市级</button>
         </div>
 
-        <!-- 数据表格 -->
+        <!-- 桌面端：数据表格 -->
         <div class="table-wrapper">
             <table id="projectTable">
                 <thead>
@@ -825,165 +810,356 @@
 
                     <!-- 项目1：智能工厂梯度培育 -->
                     <tr data-level="national">
-                        <td>1</td>
-                        <td><strong>智能工厂梯度培育项目（基础级/先进级）</strong></td>
-                        <td><span class="category-tag">智能制造</span></td>
-                        <td>工信部 / 省工信厅 / 市工信局</td>
-                        <td><span class="level-tag level-national">国家级</span></td>
-                        <td>1-5月</td>
-                        <td class="amount">50-500</td>
-                        <td>
+                        <td data-label="序号">1</td>
+                        <td data-label="项目名称"><strong>智能工厂梯度培育项目（基础级/先进级）</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">智能制造</span></td>
+                        <td data-label="归口部门">工信部 / 省工信厅 / 市工信局</td>
+                        <td data-label="申报层级"><span class="level-tag level-national">国家级</span></td>
+                        <td data-label="申报周期">1-5月</td>
+                        <td data-label="预计奖补" class="amount">50-500</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag hw">IoT设备联网</span>
                             <span class="tech-tag sw">MES系统</span>
                             <span class="tech-tag sw">SCADA</span>
                             <span class="tech-tag ai">数字孪生</span>
                         </td>
-                        <td>1. 规上工业企业，独立法人资格；2. 基础级：设备联网率≥50%，自评测≥60分；3. 先进级：成熟度≥三级，系统集成度≥70%；4. 卓越级/领航级需逐级获评</td>
-                        <td>智能工厂自评报告；设备联网率证明；系统集成方案；成熟度评估报告</td>
-                        <td class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能工厂梯度培育管理办法（暂行）<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 规上工业企业，独立法人资格；2. 基础级：设备联网率≥50%，自评测≥60分；3. 先进级：成熟度≥三级，系统集成度≥70%；4. 卓越级/领航级需逐级获评</td>
+                        <td data-label="所需材料">智能工厂自评报告；设备联网率证明；系统集成方案；成熟度评估报告</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能工厂梯度培育管理办法（暂行）<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- 项目2：超长期特别国债设备更新 -->
                     <tr data-level="national">
-                        <td>2</td>
-                        <td><strong>超长期特别国债工业设备更新改造专项</strong></td>
-                        <td><span class="category-tag">技术改造</span></td>
-                        <td>国家发改委 / 财政部</td>
-                        <td><span class="level-tag level-national">国家级</span></td>
-                        <td>6-7月（第三批）</td>
-                        <td class="amount">最高10000</td>
-                        <td>
+                        <td data-label="序号">2</td>
+                        <td data-label="项目名称"><strong>超长期特别国债工业设备更新改造专项</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">技术改造</span></td>
+                        <td data-label="归口部门">国家发改委 / 财政部</td>
+                        <td data-label="申报层级"><span class="level-tag level-national">国家级</span></td>
+                        <td data-label="申报周期">6-7月（第三批）</td>
+                        <td data-label="预计奖补" class="amount">最高10000</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag hw">智能设备</span>
                             <span class="tech-tag hw">自动化产线</span>
                             <span class="tech-tag hw">节能设备</span>
                         </td>
-                        <td>1. 覆盖轻工等11大行业；2. 固定资产投资≥200万元（不含土地、厂房）；3. 淘汰落后设备，替换智能高效新设备；4. 无失信记录</td>
-                        <td>设备更新方案；投资明细清单；项目备案/核准文件；淘汰设备清单</td>
-                        <td class="policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">关于做好2026年超长期特别国债资金支持设备更新工作的通知<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 覆盖轻工等11大行业；2. 固定资产投资≥200万元（不含土地、厂房）；3. 淘汰落后设备，替换智能高效新设备；4. 无失信记录</td>
+                        <td data-label="所需材料">设备更新方案；投资明细清单；项目备案/核准文件；淘汰设备清单</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">关于做好2026年超长期特别国债资金支持设备更新工作的通知<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- 项目3："AI+制造"智能应用示范 -->
                     <tr data-level="national">
-                        <td>3</td>
-                        <td><strong>"AI+制造"智能应用示范项目</strong></td>
-                        <td><span class="category-tag">科技创新</span></td>
-                        <td>省工信厅 / 国家数据局</td>
-                        <td><span class="level-tag level-national">国家级</span></td>
-                        <td>4-5月</td>
-                        <td class="amount">最高1000</td>
-                        <td>
+                        <td data-label="序号">3</td>
+                        <td data-label="项目名称"><strong>"AI+制造"智能应用示范项目</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">科技创新</span></td>
+                        <td data-label="归口部门">省工信厅 / 国家数据局</td>
+                        <td data-label="申报层级"><span class="level-tag level-national">国家级</span></td>
+                        <td data-label="申报周期">4-5月</td>
+                        <td data-label="预计奖补" class="amount">最高1000</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag ai">AI质检</span>
                             <span class="tech-tag ai">智能排产</span>
                             <span class="tech-tag ai">机器视觉</span>
                             <span class="tech-tag sw">工业大数据</span>
                         </td>
-                        <td>1. 规上工业企业，AI应用场景≥3个；2. 项目总投资≥800万元；3. 生产效率提升≥20%或不良率降低≥30%</td>
-                        <td>AI应用场景方案书；项目实施合同及投入证明；效果评估报告（效率/良率对比数据）</td>
-                        <td class="policy-ref"><a href="http://www.hyhdz.gov.cn/zsyz/yhzc/content/post_676910.html" target="_blank" rel="noopener">广东省人工智能赋能制造业高质量发展行动方案（2025-2027年）<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 规上工业企业，AI应用场景≥3个；2. 项目总投资≥800万元；3. 生产效率提升≥20%或不良率降低≥30%</td>
+                        <td data-label="所需材料">AI应用场景方案书；项目实施合同及投入证明；效果评估报告（效率/良率对比数据）</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="http://www.hyhdz.gov.cn/zsyz/yhzc/content/post_676910.html" target="_blank" rel="noopener">广东省人工智能赋能制造业高质量发展行动方案（2025-2027年）<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- ═══ 省级项目 ═══ -->
 
                     <!-- 项目4：工业互联网标杆工厂 -->
                     <tr data-level="province">
-                        <td>4</td>
-                        <td><strong>工业互联网标杆工厂及平台应用项目</strong></td>
-                        <td><span class="category-tag">工业互联网</span></td>
-                        <td>工信部 / 省工信厅</td>
-                        <td><span class="level-tag level-province">省级</span></td>
-                        <td>2-6月</td>
-                        <td class="amount">50-300</td>
-                        <td>
+                        <td data-label="序号">4</td>
+                        <td data-label="项目名称"><strong>工业互联网标杆工厂及平台应用项目</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">工业互联网</span></td>
+                        <td data-label="归口部门">工信部 / 省工信厅</td>
+                        <td data-label="申报层级"><span class="level-tag level-province">省级</span></td>
+                        <td data-label="申报周期">2-6月</td>
+                        <td data-label="预计奖补" class="amount">50-300</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag sw">工业APP</span>
                             <span class="tech-tag hw">数据采集</span>
                             <span class="tech-tag sw">云平台</span>
                             <span class="tech-tag sw">供应链管理</span>
                         </td>
-                        <td>1. 完成设备联网与数据采集上云；2. 工业APP≥5个，覆盖50%以上生产环节；3. 通过三级等保；4. 生产效率提升≥15%</td>
-                        <td>工业互联网平台应用案例；效率提升证明报告；三级等保证明；工业APP清单</td>
-                        <td class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">工业互联网创新发展行动计划(2024-2026年)<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 完成设备联网与数据采集上云；2. 工业APP≥5个，覆盖50%以上生产环节；3. 通过三级等保；4. 生产效率提升≥15%</td>
+                        <td data-label="所需材料">工业互联网平台应用案例；效率提升证明报告；三级等保证明；工业APP清单</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">工业互联网创新发展行动计划(2024-2026年)<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- 项目5：广东省制造业数字化转型 -->
                     <tr data-level="province">
-                        <td>5</td>
-                        <td><strong>广东省制造业数字化转型项目（产业创新能力建设）</strong></td>
-                        <td><span class="category-tag">数字化转型</span></td>
-                        <td>广东省工业和信息化厅</td>
-                        <td><span class="level-tag level-province">省级</span></td>
-                        <td>3-5月</td>
-                        <td class="amount">100-500</td>
-                        <td>
+                        <td data-label="序号">5</td>
+                        <td data-label="项目名称"><strong>广东省制造业数字化转型项目（产业创新能力建设）</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">数字化转型</span></td>
+                        <td data-label="归口部门">广东省工业和信息化厅</td>
+                        <td data-label="申报层级"><span class="level-tag level-province">省级</span></td>
+                        <td data-label="申报周期">3-5月</td>
+                        <td data-label="预计奖补" class="amount">100-500</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag sw">数字化改造</span>
                             <span class="tech-tag sw">ERP/MES</span>
                             <span class="tech-tag sw">云平台</span>
                             <span class="tech-tag hw">智能传感</span>
                         </td>
-                        <td>1. 广东省内注册，独立法人工业企业；2. 数字化改造项目已备案；3. 未享受同级同类财政资金；4. 诚信经营，无失信记录</td>
-                        <td>数字化改造项目方案；项目备案文件；投入明细及证明材料；效果评估报告</td>
-                        <td class="policy-ref"><a href="https://gdii.gd.gov.cn" target="_blank" rel="noopener">2026年省级制造业当家重点任务保障专项资金（产业创新能力建设）<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 广东省内注册，独立法人工业企业；2. 数字化改造项目已备案；3. 未享受同级同类财政资金；4. 诚信经营，无失信记录</td>
+                        <td data-label="所需材料">数字化改造项目方案；项目备案文件；投入明细及证明材料；效果评估报告</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://gdii.gd.gov.cn" target="_blank" rel="noopener">2026年省级制造业当家重点任务保障专项资金（产业创新能力建设）<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- 项目6：绿色制造与智能制造融合 -->
                     <tr data-level="province">
-                        <td>6</td>
-                        <td><strong>绿色制造与智能制造融合项目</strong></td>
-                        <td><span class="category-tag">绿色制造</span></td>
-                        <td>发改委 / 工信部门</td>
-                        <td><span class="level-tag level-province">省级</span></td>
-                        <td>3-6月</td>
-                        <td class="amount">最高1000</td>
-                        <td>
+                        <td data-label="序号">6</td>
+                        <td data-label="项目名称"><strong>绿色制造与智能制造融合项目</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">绿色制造</span></td>
+                        <td data-label="归口部门">发改委 / 工信部门</td>
+                        <td data-label="申报层级"><span class="level-tag level-province">省级</span></td>
+                        <td data-label="申报周期">3-6月</td>
+                        <td data-label="预计奖补" class="amount">最高1000</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag sw">EMS能源管理</span>
                             <span class="tech-tag hw">节能设备</span>
                             <span class="tech-tag hw">碳排放监测</span>
                         </td>
-                        <td>1. 已获评或拟申报绿色工厂；2. 单位产品能耗降低≥20%；3. 建成EMS能源管理系统；4. 无环保处罚记录</td>
-                        <td>绿色工厂自评报告；能耗数据及减排证明；EMS系统建设方案；环保合规证明</td>
-                        <td class="policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">绿色制造工程实施指南<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 已获评或拟申报绿色工厂；2. 单位产品能耗降低≥20%；3. 建成EMS能源管理系统；4. 无环保处罚记录</td>
+                        <td data-label="所需材料">绿色工厂自评报告；能耗数据及减排证明；EMS系统建设方案；环保合规证明</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">绿色制造工程实施指南<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- 项目7：智能制造能力成熟度 -->
                     <tr data-level="province">
-                        <td>7</td>
-                        <td><strong>智能制造能力成熟度评估与提升项目</strong></td>
-                        <td><span class="category-tag">智能制造</span></td>
-                        <td>工信部 / 省工信厅</td>
-                        <td><span class="level-tag level-province">省级</span></td>
-                        <td>全年 / 3-4月集中</td>
-                        <td class="amount">最高500</td>
-                        <td>
+                        <td data-label="序号">7</td>
+                        <td data-label="项目名称"><strong>智能制造能力成熟度评估与提升项目</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">智能制造</span></td>
+                        <td data-label="归口部门">工信部 / 省工信厅</td>
+                        <td data-label="申报层级"><span class="level-tag level-province">省级</span></td>
+                        <td data-label="申报周期">全年 / 3-4月集中</td>
+                        <td data-label="预计奖补" class="amount">最高500</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag sw">CMMM评估</span>
                             <span class="tech-tag sw">智能规划</span>
                             <span class="tech-tag sw">系统集成</span>
                         </td>
-                        <td>1. 企业完成成熟度评估≥二级；2. 制定提升计划，目标成熟度提升一级；3. 规上工业企业</td>
-                        <td>CMMM评估报告；智能制造提升计划方案；项目实施进度报告</td>
-                        <td class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能制造能力成熟度模型及评估方法（GB/T 39116）<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 企业完成成熟度评估≥二级；2. 制定提升计划，目标成熟度提升一级；3. 规上工业企业</td>
+                        <td data-label="所需材料">CMMM评估报告；智能制造提升计划方案；项目实施进度报告</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能制造能力成熟度模型及评估方法（GB/T 39116）<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
 
                     <!-- ═══ 市级项目 ═══ -->
 
                     <!-- 项目8：广州市中小企业数字化转型 -->
                     <tr data-level="city">
-                        <td>8</td>
-                        <td><strong>广州市中小企业数字化转型城市试点专项资金项目</strong></td>
-                        <td><span class="category-tag">数字化转型</span></td>
-                        <td>广州市工业和信息化局</td>
-                        <td><span class="level-tag level-city">市级</span></td>
-                        <td>5-6月</td>
-                        <td class="amount">最高600</td>
-                        <td>
+                        <td data-label="序号">8</td>
+                        <td data-label="项目名称"><strong>广州市中小企业数字化转型城市试点专项资金项目</strong></td>
+                        <td data-label="项目类别"><span class="category-tag">数字化转型</span></td>
+                        <td data-label="归口部门">广州市工业和信息化局</td>
+                        <td data-label="申报层级"><span class="level-tag level-city">市级</span></td>
+                        <td data-label="申报周期">5-6月</td>
+                        <td data-label="预计奖补" class="amount">最高600</td>
+                        <td data-label="技术方向">
                             <span class="tech-tag sw">轻量化智能改造</span>
                             <span class="tech-tag sw">SaaS应用</span>
                             <span class="tech-tag hw">设备联网</span>
                         </td>
-                        <td>1. 注册地和项目实施地均在广州市；2. 专精特新或规上中小工业企业；3. 轻量化智能改造，总投资≤1000万元；4. 设备投资占比≥50%</td>
-                        <td>数字化改造项目多方合同；项目实施方案；设备投资清单；企业资质证书</td>
-                        <td class="policy-ref"><a href="https://gxj.gz.gov.cn/gkmlpt/content/10/10775/post_10775537.html" target="_blank" rel="noopener">广州市2026年中小企业数字化转型城市试点专项资金项目（第一批）入库申报通知<span class="ext-icon">&#8599;</span></a></td>
+                        <td data-label="核心条件">1. 注册地和项目实施地均在广州市；2. 专精特新或规上中小工业企业；3. 轻量化智能改造，总投资≤1000万元；4. 设备投资占比≥50%</td>
+                        <td data-label="所需材料">数字化改造项目多方合同；项目实施方案；设备投资清单；企业资质证书</td>
+                        <td data-label="政策依据" class="policy-ref"><a href="https://gxj.gz.gov.cn/gkmlpt/content/10/10775/post_10775537.html" target="_blank" rel="noopener">广州市2026年中小企业数字化转型城市试点专项资金项目（第一批）入库申报通知<span class="ext-icon">&#8599;</span></a></td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- 移动端：卡片视图 -->
+        <div class="mobile-cards" id="mobileCards">
+            <!-- 项目1：智能工厂梯度培育 -->
+            <div class="m-project-card" data-level="national">
+                <div class="m-card-header">
+                    <div class="m-seq">1</div>
+                    <div class="m-title">智能工厂梯度培育项目（基础级/先进级）</div>
+                    <span class="level-tag level-national">国家级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">智能制造</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">工信部 / 省工信厅 / 市工信局</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">1-5月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">50-500万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag hw">IoT设备联网</span>
+                        <span class="tech-tag sw">MES系统</span>
+                        <span class="tech-tag sw">SCADA</span>
+                        <span class="tech-tag ai">数字孪生</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 规上工业企业，独立法人资格；2. 基础级：设备联网率≥50%，自评测≥60分；3. 先进级：成熟度≥三级，系统集成度≥70%；4. 卓越级/领航级需逐级获评</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">智能工厂自评报告；设备联网率证明；系统集成方案；成熟度评估报告</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能工厂梯度培育管理办法（暂行）<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目2：超长期特别国债设备更新 -->
+            <div class="m-project-card" data-level="national">
+                <div class="m-card-header">
+                    <div class="m-seq">2</div>
+                    <div class="m-title">超长期特别国债工业设备更新改造专项</div>
+                    <span class="level-tag level-national">国家级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">技术改造</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">国家发改委 / 财政部</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">6-7月（第三批）</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">最高10000万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag hw">智能设备</span>
+                        <span class="tech-tag hw">自动化产线</span>
+                        <span class="tech-tag hw">节能设备</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 覆盖轻工等11大行业；2. 固定资产投资≥200万元（不含土地、厂房）；3. 淘汰落后设备，替换智能高效新设备；4. 无失信记录</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">设备更新方案；投资明细清单；项目备案/核准文件；淘汰设备清单</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">关于做好2026年超长期特别国债资金支持设备更新工作的通知<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目3："AI+制造"智能应用示范 -->
+            <div class="m-project-card" data-level="national">
+                <div class="m-card-header">
+                    <div class="m-seq">3</div>
+                    <div class="m-title">"AI+制造"智能应用示范项目</div>
+                    <span class="level-tag level-national">国家级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">科技创新</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">省工信厅 / 国家数据局</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">4-5月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">最高1000万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag ai">AI质检</span>
+                        <span class="tech-tag ai">智能排产</span>
+                        <span class="tech-tag ai">机器视觉</span>
+                        <span class="tech-tag sw">工业大数据</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 规上工业企业，AI应用场景≥3个；2. 项目总投资≥800万元；3. 生产效率提升≥20%或不良率降低≥30%</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">AI应用场景方案书；项目实施合同及投入证明；效果评估报告（效率/良率对比数据）</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="http://www.hyhdz.gov.cn/zsyz/yhzc/content/post_676910.html" target="_blank" rel="noopener">广东省人工智能赋能制造业高质量发展行动方案（2025-2027年）<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目4：工业互联网标杆工厂 -->
+            <div class="m-project-card" data-level="province">
+                <div class="m-card-header">
+                    <div class="m-seq">4</div>
+                    <div class="m-title">工业互联网标杆工厂及平台应用项目</div>
+                    <span class="level-tag level-province">省级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">工业互联网</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">工信部 / 省工信厅</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">2-6月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">50-300万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag sw">工业APP</span>
+                        <span class="tech-tag hw">数据采集</span>
+                        <span class="tech-tag sw">云平台</span>
+                        <span class="tech-tag sw">供应链管理</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 完成设备联网与数据采集上云；2. 工业APP≥5个，覆盖50%以上生产环节；3. 通过三级等保；4. 生产效率提升≥15%</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">工业互联网平台应用案例；效率提升证明报告；三级等保证明；工业APP清单</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">工业互联网创新发展行动计划(2024-2026年)<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目5：广东省制造业数字化转型 -->
+            <div class="m-project-card" data-level="province">
+                <div class="m-card-header">
+                    <div class="m-seq">5</div>
+                    <div class="m-title">广东省制造业数字化转型项目（产业创新能力建设）</div>
+                    <span class="level-tag level-province">省级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">数字化转型</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">广东省工业和信息化厅</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">3-5月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">100-500万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag sw">数字化改造</span>
+                        <span class="tech-tag sw">ERP/MES</span>
+                        <span class="tech-tag sw">云平台</span>
+                        <span class="tech-tag hw">智能传感</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 广东省内注册，独立法人工业企业；2. 数字化改造项目已备案；3. 未享受同级同类财政资金；4. 诚信经营，无失信记录</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">数字化改造项目方案；项目备案文件；投入明细及证明材料；效果评估报告</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://gdii.gd.gov.cn" target="_blank" rel="noopener">2026年省级制造业当家重点任务保障专项资金（产业创新能力建设）<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目6：绿色制造与智能制造融合 -->
+            <div class="m-project-card" data-level="province">
+                <div class="m-card-header">
+                    <div class="m-seq">6</div>
+                    <div class="m-title">绿色制造与智能制造融合项目</div>
+                    <span class="level-tag level-province">省级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">绿色制造</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">发改委 / 工信部门</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">3-6月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">最高1000万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag sw">EMS能源管理</span>
+                        <span class="tech-tag hw">节能设备</span>
+                        <span class="tech-tag hw">碳排放监测</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 已获评或拟申报绿色工厂；2. 单位产品能耗降低≥20%；3. 建成EMS能源管理系统；4. 无环保处罚记录</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">绿色工厂自评报告；能耗数据及减排证明；EMS系统建设方案；环保合规证明</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://www.ndrc.gov.cn" target="_blank" rel="noopener">绿色制造工程实施指南<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目7：智能制造能力成熟度 -->
+            <div class="m-project-card" data-level="province">
+                <div class="m-card-header">
+                    <div class="m-seq">7</div>
+                    <div class="m-title">智能制造能力成熟度评估与提升项目</div>
+                    <span class="level-tag level-province">省级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">智能制造</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">工信部 / 省工信厅</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">全年 / 3-4月集中</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">最高500万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag sw">CMMM评估</span>
+                        <span class="tech-tag sw">智能规划</span>
+                        <span class="tech-tag sw">系统集成</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 企业完成成熟度评估≥二级；2. 制定提升计划，目标成熟度提升一级；3. 规上工业企业</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">CMMM评估报告；智能制造提升计划方案；项目实施进度报告</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://www.miit.gov.cn" target="_blank" rel="noopener">智能制造能力成熟度模型及评估方法（GB/T 39116）<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
+
+            <!-- 项目8：广州市中小企业数字化转型 -->
+            <div class="m-project-card" data-level="city">
+                <div class="m-card-header">
+                    <div class="m-seq">8</div>
+                    <div class="m-title">广州市中小企业数字化转型城市试点专项资金项目</div>
+                    <span class="level-tag level-city">市级</span>
+                </div>
+                <div class="m-card-body">
+                    <div class="m-field"><div class="m-label">项目类别</div><div class="m-value"><span class="category-tag">数字化转型</span></div></div>
+                    <div class="m-field"><div class="m-label">归口部门</div><div class="m-value">广州市工业和信息化局</div></div>
+                    <div class="m-field"><div class="m-label">申报周期</div><div class="m-value">5-6月</div></div>
+                    <div class="m-field"><div class="m-label">预计奖补</div><div class="m-value amount">最高600万元</div></div>
+                    <div class="m-field"><div class="m-label">技术方向</div><div class="m-value">
+                        <span class="tech-tag sw">轻量化智能改造</span>
+                        <span class="tech-tag sw">SaaS应用</span>
+                        <span class="tech-tag hw">设备联网</span>
+                    </div></div>
+                    <div class="m-field"><div class="m-label">核心条件</div><div class="m-value">1. 注册地和项目实施地均在广州市；2. 专精特新或规上中小工业企业；3. 轻量化智能改造，总投资≤1000万元；4. 设备投资占比≥50%</div></div>
+                    <div class="m-field"><div class="m-label">所需材料</div><div class="m-value">数字化改造项目多方合同；项目实施方案；设备投资清单；企业资质证书</div></div>
+                    <div class="m-field"><div class="m-label">政策依据</div><div class="m-value policy-ref"><a href="https://gxj.gz.gov.cn/gkmlpt/content/10/10775/post_10775537.html" target="_blank" rel="noopener">广州市2026年中小企业数字化转型城市试点专项资金项目（第一批）入库申报通知<span class="ext-icon">&#8599;</span></a></div></div>
+                </div>
+            </div>
         </div>
 
         <!-- 申报规划路线图 -->
@@ -1314,7 +1490,7 @@
                     <div class="timeline-item">
                         <div class="year">2026年</div>
                         <h4>广州市中小企业数字化转型城市试点项目</h4>
-                        <p>集团旗下制造企业参与广州市2026年第一批中小企业数字化改造项目入库申报 <span class="status-progress">进行中</span></p>
+                        <p>集团旗下制造企业参与广州市2026年第一批数字化改造项目入库申报 <span class="status-progress">进行中</span></p>
                     </div>
                     <div class="timeline-item">
                         <div class="year">2025年</div>
@@ -1363,19 +1539,21 @@
         });
     });
 
-    // 2. 表格层级筛选
+    // 2. 表格 + 卡片 层级筛选（同步桌面和移动端）
     function filterTable(level) {
-        const rows = document.querySelectorAll('#projectTable tbody tr');
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        rows.forEach(row => {
-            if (level === 'all' || row.dataset.level === level) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+        // 桌面端表格
+        const tableRows = document.querySelectorAll('#projectTable tbody tr');
+        tableRows.forEach(row => {
+            row.style.display = (level === 'all' || row.dataset.level === level) ? '' : 'none';
         });
+        // 移动端卡片
+        const mobileCards = document.querySelectorAll('#mobileCards .m-project-card');
+        mobileCards.forEach(card => {
+            card.style.display = (level === 'all' || card.dataset.level === level) ? '' : 'none';
+        });
+        // 按钮状态
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
     }
 
     // 3. 滚动监听 (Scroll Spy)
